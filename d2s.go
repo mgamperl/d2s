@@ -48,7 +48,7 @@ func parse(bfr *bufio.Reader) (*Character, error) {
 		return nil, encodeError(char, err.Error())
 	}
 
-	if err := parseItems(bfr, char); err != nil {
+	if err := ParseItems(bfr, char); err != nil {
 		return nil, encodeError(char, err.Error())
 	}
 
@@ -212,7 +212,7 @@ func parseSkills(bfr io.Reader, char *Character) error {
 
 // Parses all items on the character, this includes items in stash, cube,
 // inventory and equipped items.
-func parseItems(bfr io.ByteReader, char *Character) error {
+func ParseItems(bfr io.ByteReader, char *Character) error {
 	// Make a buffer that can hold 4 bytes, which can hold the items header.
 	buf := make([]byte, 4)
 
@@ -229,10 +229,10 @@ func parseItems(bfr io.ByteReader, char *Character) error {
 	}
 
 	if string(itemHeaderData.Header[:]) != "JM" {
-		return errors.New("failed to find the items header")
+		return errors.New("failed to find the items header: ")
 	}
 
-	items, err := parseItemList(bfr, int(itemHeaderData.Count))
+	items, err := ParseItemList(bfr, int(itemHeaderData.Count))
 	if err != nil {
 		return err
 	}
@@ -296,7 +296,7 @@ func parseCorpse(bfr io.ByteReader, char *Character) error {
 			return errors.New("failed to find the merc items header")
 		}
 
-		corpseItems, err := parseItemList(bfr, int(itemHeaderData.Count))
+		corpseItems, err := ParseItemList(bfr, int(itemHeaderData.Count))
 		if err != nil {
 			return err
 		}
@@ -342,7 +342,7 @@ func parseMercItems(bfr io.ByteReader, char *Character) error {
 			return errors.New("failed to find the merc items header")
 		}
 
-		items, err := parseItemList(bfr, int(itemHeaderData.Count))
+		items, err := ParseItemList(bfr, int(itemHeaderData.Count))
 		if err != nil {
 			return err
 		}
@@ -376,7 +376,7 @@ func parseIronGolem(bfr io.ByteReader, char *Character) error {
 	}
 
 	if golemHeaderData.HasGolem == 1 {
-		item, err := parseItemList(bfr, 1)
+		item, err := ParseItemList(bfr, 1)
 		if err != nil {
 			return err
 		}
@@ -387,7 +387,7 @@ func parseIronGolem(bfr io.ByteReader, char *Character) error {
 	return nil
 }
 
-func parseItemList(bfr io.ByteReader, itemCount int) ([]Item, error) {
+func ParseItemList(bfr io.ByteReader, itemCount int) ([]Item, error) {
 	var itemList []Item
 
 	ibr := bitReader{r: bfr}
@@ -402,8 +402,9 @@ func parseItemList(bfr io.ByteReader, itemCount int) ([]Item, error) {
 		var readBits int
 		parsed := Item{}
 
+		ibr.StartCollectingData()
 		// Read the 111 bit basic item structure, all items have this structure.
-		err := parseSimpleBits(&ibr, &parsed)
+		err := ParseSimpleBits(&ibr, &parsed)
 		readBits += 111
 
 		if err != nil {
@@ -477,7 +478,7 @@ func parseItemList(bfr io.ByteReader, itemCount int) ([]Item, error) {
 			case partOfSet:
 				parsed.SetID = reverseBits(ibr.ReadBits64(12, true), 12)
 
-				setName, ok := setNames[parsed.SetID]
+				setName, ok := SetNames[parsed.SetID]
 				if ok {
 					parsed.SetName = setName
 				}
@@ -485,13 +486,13 @@ func parseItemList(bfr io.ByteReader, itemCount int) ([]Item, error) {
 				readBits += 12
 
 			case rare, crafted:
-				rBits, _ := parseRareOrCraftedBits(&ibr, &parsed)
+				rBits, _ := ParseRareOrCraftedBits(&ibr, &parsed)
 				readBits += rBits
 
 			case unique:
 				parsed.UniqueID = reverseBits(ibr.ReadBits64(12, true), 12)
 
-				uniqueName, ok := uniqueNames[parsed.UniqueID]
+				uniqueName, ok := UniqueNames[parsed.UniqueID]
 				if ok {
 					parsed.UniqueName = uniqueName
 				}
@@ -674,7 +675,7 @@ func parseItemList(bfr io.ByteReader, itemCount int) ([]Item, error) {
 
 			// Add item to the socket list
 			itemList[last].SocketedItems = append(itemList[last].SocketedItems, parsed)
-
+			itemList[last].OriginalData = append(itemList[last].OriginalData, ibr.GetCollectedData()...)
 		} else {
 			// Ok, so this item it self is not in a socket, but it might have socketed
 			// items in it, if it does, we'll need to increment the number of total
@@ -688,6 +689,7 @@ func parseItemList(bfr io.ByteReader, itemCount int) ([]Item, error) {
 				numberOfItemsToRead += int(parsed.NrOfItemsInSockets)
 			}
 
+			parsed.OriginalData = append(parsed.OriginalData, ibr.GetCollectedData()...)
 			itemList = append(itemList, parsed)
 		}
 
@@ -706,7 +708,7 @@ func parseItemList(bfr io.ByteReader, itemCount int) ([]Item, error) {
 }
 
 // Parses the 108 bits of data all items have, both simple items and extended items.
-func parseSimpleBits(ibr *bitReader, item *Item) error {
+func ParseSimpleBits(ibr *bitReader, item *Item) error {
 	var readBits int
 	// offset: 0 "J"
 	j := ibr.ReadBits64(8, false)
@@ -809,12 +811,12 @@ func parseSimpleBits(ibr *bitReader, item *Item) error {
 	readBits += 4
 
 	// offset 69
-	item.PositionY = reverseBits(ibr.ReadBits64(3, true), 3)
-	readBits += 3
+	item.PositionY = reverseBits(ibr.ReadBits64(4, true), 4)
+	readBits += 4
 
 	// offset 72
-	_ = reverseBits(ibr.ReadBits64(1, true), 1)
-	readBits++
+	/*_ = reverseBits(ibr.ReadBits64(1, true), 1)
+	readBits++*/
 
 	// offset 73, if item is neither equipped or in the belt, this tells us where it is.
 	item.AltPositionID = reverseBits(ibr.ReadBits64(3, true), 3)
@@ -916,7 +918,7 @@ func parseSimpleBits(ibr *bitReader, item *Item) error {
 
 // Parses the rare or crafted bits that only exists on rare and crafted items,
 // the bit length may vary depending on how many properties the item have.
-func parseRareOrCraftedBits(ibr *bitReader, item *Item) (int, error) {
+func ParseRareOrCraftedBits(ibr *bitReader, item *Item) (int, error) {
 	var readBits int
 
 	nameID1 := reverseBits(ibr.ReadBits64(8, true), 8)
@@ -961,7 +963,7 @@ func parseRunewordBits(ibr *bitReader, item *Item) {
 	runewordID := reverseBits(ibr.ReadBits64(12, true), 12)
 	item.RunewordID = runewordID
 
-	runewordName, ok := runewordNames[runewordID]
+	runewordName, ok := RunewordNames[runewordID]
 	if ok {
 		item.RunewordName = runewordName
 	}

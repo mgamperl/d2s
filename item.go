@@ -57,6 +57,7 @@ type Item struct {
 	MagicAttributes     []magicAttribute   `json:"magic_attributes"`
 	SocketedItems       []Item             `json:"socketed_items"`
 	BaseDamage          *weaponDamage      `json:"base_damage,omitempty"`
+	OriginalData        []byte
 }
 
 func (i *Item) getTypeID() uint64 {
@@ -1713,7 +1714,7 @@ var rareNames = map[uint64]string{
 	201: "Corruption",
 }
 
-var setNames = map[uint64]string{
+var SetNames = map[uint64]string{
 	0:   "Civerb's Ward",
 	1:   "Civerb's Icon",
 	2:   "Civerb's Cudgel",
@@ -1843,7 +1844,7 @@ var setNames = map[uint64]string{
 	126: "Sander's Superstition",
 }
 
-var runewordNames = map[uint64]string{
+var RunewordNames = map[uint64]string{
 	27:   "Ancient's Pledge",
 	30:   "Beast",
 	32:   "Black",
@@ -1925,7 +1926,7 @@ var runewordNames = map[uint64]string{
 	2718: "Delirium",
 }
 
-var uniqueNames = map[uint64]string{
+var UniqueNames = map[uint64]string{
 	0:   "The Gnasher",
 	1:   "Deathspade",
 	2:   "Bladebone",

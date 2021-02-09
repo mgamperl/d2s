@@ -11,6 +11,15 @@ type bitReader struct {
 	n    uint64
 	bits uint
 	err  error
+	data []byte
+}
+
+func (br *bitReader) StartCollectingData() {
+	br.data = []byte{}
+}
+
+func (br *bitReader) GetCollectedData() []byte {
+	return br.data
 }
 
 // ReadBits64 reads the given number of bits and returns them in the
@@ -19,6 +28,8 @@ type bitReader struct {
 func (br *bitReader) ReadBits64(bits uint, reverse bool) (n uint64) {
 	for bits > br.bits {
 		b, err := br.r.ReadByte()
+
+		br.data = append(br.data, b)
 
 		if reverse {
 			b = reverseByte(b)
