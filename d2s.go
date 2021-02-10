@@ -525,7 +525,7 @@ func ParseItemList(bfr io.ByteReader, itemCount int) ([]Item, error) {
 			// If the item is a tome, it will contain 5 extra bits, we're not
 			// interested in these bits, the value is usually 1, but not sure
 			// what it is.
-			if tomeMap[parsed.Type] {
+			if tomeMap[ItemType(parsed.Type)] {
 				_ = reverseBits(ibr.ReadBits64(5, true), 5)
 				readBits += 5
 			}
@@ -561,7 +561,7 @@ func ParseItemList(bfr io.ByteReader, itemCount int) ([]Item, error) {
 				}
 			}
 
-			if quantityMap[parsed.Type] {
+			if quantityMap[ItemType(parsed.Type)] {
 				// If the item is a stacked item, e.g. a javelin or something, these 9
 				// bits will contain the quantity.
 				parsed.Quantity = reverseBits(ibr.ReadBits64(9, true), 9)
@@ -649,7 +649,7 @@ func ParseItemList(bfr io.ByteReader, itemCount int) ([]Item, error) {
 			// The socketed item is a weapon, so we'll read the socketed properties
 			// from the weapons map.
 			if itemList[last].TypeID == weapon {
-				attrList, ok := socketablesWeapons[parsed.Type]
+				attrList, ok := socketablesWeapons[ItemType(parsed.Type)]
 				if ok {
 					parsed.MagicAttributes = attrList
 				}
@@ -658,7 +658,7 @@ func ParseItemList(bfr io.ByteReader, itemCount int) ([]Item, error) {
 			// The socketed item is an armor piece, so we'll read the socketed properties
 			// from the armor map.
 			if itemList[last].TypeID == armor {
-				attrList, ok := socketablesArmor[parsed.Type]
+				attrList, ok := socketablesArmor[ItemType(parsed.Type)]
 				if ok {
 					parsed.MagicAttributes = attrList
 				}
@@ -667,7 +667,7 @@ func ParseItemList(bfr io.ByteReader, itemCount int) ([]Item, error) {
 			// The socketed item is a shield, so we'll read the socketed properties
 			// from the shield map.
 			if itemList[last].TypeID == shield {
-				attrList, ok := socketablesShields[parsed.Type]
+				attrList, ok := socketablesShields[ItemType(parsed.Type)]
 				if ok {
 					parsed.MagicAttributes = attrList
 				}
@@ -834,24 +834,24 @@ func ParseSimpleBits(ibr *bitReader, item *Item) error {
 
 		switch item.TypeID {
 		case armor:
-			typeName, ok := armorCodes[item.Type]
+			typeName, ok := armorCodes[ItemType(item.Type)]
 			if ok {
 				item.TypeName = typeName
 			}
 		case shield:
-			typeName, ok := shieldCodes[item.Type]
+			typeName, ok := shieldCodes[ItemType(item.Type)]
 			if ok {
 				item.TypeName = typeName
 			}
 		case weapon:
-			typeName, ok := weaponCodes[item.Type]
+			typeName, ok := weaponCodes[ItemType(item.Type)]
 			if ok {
 				item.TypeName = typeName
 			}
 
 			// Weapons have base damage, so we'll check our
 			// map for the base damage of this weapon type.
-			baseDamage, ok := weaponDamageMap[item.Type]
+			baseDamage, ok := weaponDamageMap[ItemType(item.Type)]
 			if ok {
 
 				// If the item is ethereal we need to add 50% enhanced
@@ -868,7 +868,7 @@ func ParseSimpleBits(ibr *bitReader, item *Item) error {
 			}
 
 		case other:
-			typeName, ok := miscCodes[item.Type]
+			typeName, ok := miscCodes[ItemType(item.Type)]
 			if ok {
 				item.TypeName = typeName
 			}
@@ -974,9 +974,9 @@ func parseRunewordBits(ibr *bitReader, item *Item) {
 
 // Parses the magical property list in the byte queue that belongs to an item
 // and returns the list of properties.
-func parseMagicalList(ibr *bitReader) ([]magicAttribute, int, error) {
+func parseMagicalList(ibr *bitReader) ([]MagicAttribute, int, error) {
 
-	var magicAttributes []magicAttribute
+	var magicAttributes []MagicAttribute
 	var readBits int
 
 	for {
@@ -1011,7 +1011,7 @@ func parseMagicalList(ibr *bitReader) ([]magicAttribute, int, error) {
 			values = append(values, int64(val))
 		}
 
-		attr := magicAttribute{
+		attr := MagicAttribute{
 			ID:     id,
 			Name:   prop.Name,
 			Values: values,
