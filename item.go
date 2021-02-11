@@ -139,8 +139,8 @@ const (
 	Gauntlets         ItemType = "hgl"
 	GhostArmor        ItemType = "xui"
 	GiantConch        ItemType = "uhl"
-	Girdle            ItemType = "hbl"
-	Gloves            ItemType = "lgl"
+	PlatedBelt        ItemType = "hbl"
+	LeatherGloves     ItemType = "lgl"
 	GothicPlate       ItemType = "gth"
 	GrandCrown        ItemType = "xrn"
 	GreatHauberk      ItemType = "urs"
@@ -183,7 +183,7 @@ const (
 	MyrmidonGreaves   ItemType = "uhb"
 	OgreGauntlets     ItemType = "uhg"
 	OrnatePlate       ItemType = "xar"
-	PlateBoots        ItemType = "hbt"
+	Greaves           ItemType = "hbt"
 	QuiltedArmor      ItemType = "qui"
 	RageMask          ItemType = "ba8"
 	RingMail          ItemType = "rng"
@@ -238,7 +238,7 @@ const (
 	AntidotePotion                ItemType = "yps"
 	Arrows                        ItemType = "aqv"
 	BaalsEye                      ItemType = "bey"
-	BarkScroll                    ItemType = "bks"
+	ScrollOfInifuss1              ItemType = "bks"
 	BerRune                       ItemType = "r30"
 	Bolts                         ItemType = "cqv"
 	BookofSkill                   ItemType = "ass"
@@ -255,7 +255,7 @@ const (
 	ChippedSapphire               ItemType = "gcb"
 	ChippedSkull                  ItemType = "skc"
 	ChippedTopaz                  ItemType = "gcy"
-	DecipheredBarkScroll          ItemType = "bkd"
+	ScrollOfInifuss2              ItemType = "bkd"
 	DiablosHorn                   ItemType = "dhn"
 	Diamond                       ItemType = "gsw"
 	DolRune                       ItemType = "r14"
@@ -284,16 +284,16 @@ const (
 	FullManaPotion                ItemType = "mpf"
 	FullRejuvenationPotion        ItemType = "rvl"
 	Gold                          ItemType = "gld"
-	GoldBird                      ItemType = "g34"
-	GreaterHealingPotion          ItemType = "hp5"
-	GreaterManaPotion             ItemType = "mp5"
+	TheGoldenBird                 ItemType = "g34"
+	SuperHealingPotion            ItemType = "hp5"
+	SuperManaPotion               ItemType = "mp5"
 	GulRune                       ItemType = "r25"
 	HealingPotion                 ItemType = "hp3"
 	HealingPotionMid              ItemType = "hpo"
 	HelRune                       ItemType = "r15"
 	Herb                          ItemType = "hrb"
 	HoradricCube                  ItemType = "box"
-	IdentifyBook                  ItemType = "ibk"
+	TomeOfIdentify                ItemType = "ibk"
 	IdentifyScroll                ItemType = "isc"
 	IoRune                        ItemType = "r16"
 	IstRune                       ItemType = "r24"
@@ -312,13 +312,13 @@ const (
 	LargeBluePotion               ItemType = "bpl"
 	LargeRedPotion                ItemType = "rpl"
 	LemRune                       ItemType = "r20"
-	LesserHealingPotion           ItemType = "hp1"
-	LesserManaPotion              ItemType = "mp1"
+	MinorHealingPotion            ItemType = "hp1"
+	MinorManaPotion               ItemType = "mp1"
 	LightHealingPotion            ItemType = "hp2"
 	LightManaPotion               ItemType = "mp2"
 	LoRune                        ItemType = "r28"
 	LumRune                       ItemType = "r17"
-	Maguffin                      ItemType = "ice"
+	MalahsPotion                  ItemType = "ice"
 	MalRune                       ItemType = "r23"
 	ManaPotion                    ItemType = "mp3"
 	ManaPotionMid                 ItemType = "mpo"
@@ -343,19 +343,19 @@ const (
 	Ruby                          ItemType = "gsr"
 	Sapphire                      ItemType = "gsb"
 	Scroll                        ItemType = "0sc"
-	ScrollofHoradric              ItemType = "tr1"
-	ScrollofMalah                 ItemType = "tr2"
+	HoradricScroll                ItemType = "tr1"
+	ScrollOfResistance            ItemType = "tr2"
 	PotionofLife                  ItemType = "xyz"
 	ShaelRune                     ItemType = "r13"
-	SkeletonKey                   ItemType = "key"
+	Key                           ItemType = "key"
 	Skull                         ItemType = "sku"
 	SmallBluePotion               ItemType = "bps"
 	SmallRedPotion                ItemType = "rps"
 	SolRune                       ItemType = "r12"
 	StaminaPotion                 ItemType = "vps"
 	StandardofHeroes              ItemType = "std"
-	StrongHealingPotion           ItemType = "hp4"
-	StrongManaPotion              ItemType = "mp4"
+	GreaterHealingPotion          ItemType = "hp4"
+	GreaterManaPotion             ItemType = "mp4"
 	SurRune                       ItemType = "r29"
 	TalRune                       ItemType = "r07"
 	ThawingPotion                 ItemType = "wms"
@@ -364,8 +364,8 @@ const (
 	TokenofAbsolution             ItemType = "toa"
 	Topaz                         ItemType = "gsy"
 	Torch                         ItemType = "tch"
-	TownPortalBook                ItemType = "tbk"
-	TownPortalScroll              ItemType = "tsc"
+	TomeOfTownPortal              ItemType = "tbk"
+	ScrollOfTownPortal            ItemType = "tsc"
 	TwistedEssenceofSuffering     ItemType = "tes"
 	UmRune                        ItemType = "r22"
 	VexRune                       ItemType = "r26"
@@ -511,8 +511,8 @@ const (
 	DivineScepter       ItemType = "9ws"
 	DoubleAxe           ItemType = "2ax"
 	DoubleBow           ItemType = "8cb"
-	DragonStone         ItemType = "ob5"
-	EableOrb            ItemType = "ob1"
+	JaredsStone         ItemType = "ob5"
+	EagleOrb            ItemType = "ob1"
 	EdgeBow             ItemType = "8sb"
 	ElderStaff          ItemType = "6cs"
 	EldritchOrb         ItemType = "obc"
@@ -533,7 +533,7 @@ const (
 	FlyingAxe           ItemType = "7ta"
 	FlyingKnife         ItemType = "7tk"
 	Francisca           ItemType = "9ta"
-	FulmatingPotion     ItemType = "opl"
+	FulminatingPotion   ItemType = "opl"
 	Fuscina             ItemType = "9tr"
 	GhostGlaive         ItemType = "7gl"
 	GhostSpear          ItemType = "7st"
@@ -588,7 +588,7 @@ const (
 	Javelin             ItemType = "jav"
 	JoStaff             ItemType = "8ss"
 	Katar               ItemType = "ktr"
-	KhalimFlail         ItemType = "qf1"
+	KhalimsFlail        ItemType = "qf1"
 	Knout               ItemType = "9fl"
 	Kriss               ItemType = "kri"
 	Lance               ItemType = "9p9"
@@ -686,7 +686,7 @@ const (
 	StranglingGasPotion ItemType = "gpl"
 	StygianPike         ItemType = "7tr"
 	StygianPilum        ItemType = "7pi"
-	SuperKhalimFlail    ItemType = "qf2"
+	KhalimsWill         ItemType = "qf2"
 	Suwayyah            ItemType = "7ar"
 	SwirlingCrystal     ItemType = "oba"
 	Tabar               ItemType = "9bt"
@@ -1061,11 +1061,11 @@ var weaponDamageMap = map[ItemType]WeaponDamage{
 	UnearthedWand: {Min: 22, Max: 28},
 
 	// Orbs
-	EableOrb:         {Min: 2, Max: 5},
+	EagleOrb:         {Min: 2, Max: 5},
 	SacredGlobe:      {Min: 3, Max: 8},
 	SmokedSphere:     {Min: 4, Max: 10},
 	ClaspedOrb:       {Min: 5, Max: 12},
-	DragonStone:      {Min: 8, Max: 18},
+	JaredsStone:      {Min: 8, Max: 18},
 	GlowingOrb:       {Min: 8, Max: 21},
 	CrystallineGlobe: {Min: 10, Max: 26},
 	CloudySphere:     {Min: 11, Max: 29},
@@ -1162,15 +1162,15 @@ var setReqIDsMap = map[uint64][]uint64{
 // when they exist, or we'll ruin the rest of the bit offsets for the item.
 var quantityMap = map[ItemType]bool{
 	//Misc
-	TownPortalBook:      true,
-	IdentifyBook:        true,
-	SkeletonKey:         true,
+	TomeOfTownPortal:    true,
+	TomeOfIdentify:      true,
+	Key:                 true,
 	RancidGasPotion:     true,
 	OilPotion:           true,
 	ChokingGasPotion:    true,
 	ExplodingPotion:     true,
 	StranglingGasPotion: true,
-	FulmatingPotion:     true,
+	FulminatingPotion:   true,
 	Arrows:              true,
 	Bolts:               true,
 
@@ -1212,8 +1212,8 @@ var quantityMap = map[ItemType]bool{
 // Items that are tomes contain 5 extra bits, so we need to keep track of what
 // items are tomes, and read the bits accordingly.
 var tomeMap = map[ItemType]bool{
-	TownPortalBook: true,
-	IdentifyBook:   true,
+	TomeOfTownPortal: true,
+	TomeOfIdentify:   true,
 }
 
 var magicalProperties = map[uint64]MagicalProperty{
@@ -1635,8 +1635,8 @@ var armorCodes = map[ItemType]string{
 	Gauntlets:         "Gauntlets",
 	GhostArmor:        "Ghost Armor",
 	GiantConch:        "Giant Conch",
-	Girdle:            "Girdle",
-	Gloves:            "Gloves",
+	PlatedBelt:        "Plated Belt",
+	LeatherGloves:     "Gloves",
 	GothicPlate:       "Gothic Plate",
 	GrandCrown:        "Grand Crown",
 	GreatHauberk:      "Great Hauberk",
@@ -1679,7 +1679,7 @@ var armorCodes = map[ItemType]string{
 	MyrmidonGreaves:   "Myrmidon Greaves",
 	OgreGauntlets:     "Ogre Gauntlets",
 	OrnatePlate:       "Ornate Plate",
-	PlateBoots:        "Plate Boots",
+	Greaves:           "Plate Boots",
 	QuiltedArmor:      "Quilted Armor",
 	RageMask:          "Rage Mask",
 	RingMail:          "Ring Mail",
@@ -1813,8 +1813,8 @@ var weaponCodes = map[ItemType]string{
 	DivineScepter:       "Divine Scepter",
 	DoubleAxe:           "Double Axe",
 	DoubleBow:           "Double Bow",
-	DragonStone:         "Dragon Stone",
-	EableOrb:            "Eable Orb",
+	JaredsStone:         "Dragon Stone",
+	EagleOrb:            "Eable Orb",
 	EdgeBow:             "Edge Bow",
 	ElderStaff:          "Elder Staff",
 	EldritchOrb:         "Eldritch Orb",
@@ -1835,7 +1835,7 @@ var weaponCodes = map[ItemType]string{
 	FlyingAxe:           "Flying Axe",
 	FlyingKnife:         "Flying Knife",
 	Francisca:           "Francisca",
-	FulmatingPotion:     "Fulmating Potion",
+	FulminatingPotion:   "Fulmating Potion",
 	Fuscina:             "Fuscina",
 	GhostGlaive:         "Ghost Glaive",
 	GhostSpear:          "Ghost Spear",
@@ -1890,7 +1890,7 @@ var weaponCodes = map[ItemType]string{
 	Javelin:             "Javelin",
 	JoStaff:             "Jo Staff",
 	Katar:               "Katar",
-	KhalimFlail:         "Khalim Flail",
+	KhalimsFlail:        "Khalim Flail",
 	Knout:               "Knout",
 	Kriss:               "Kriss",
 	Lance:               "Lance",
@@ -1988,7 +1988,7 @@ var weaponCodes = map[ItemType]string{
 	StranglingGasPotion: "Strangling Gas Potion",
 	StygianPike:         "Stygian Pike",
 	StygianPilum:        "Stygian Pilum",
-	SuperKhalimFlail:    "Super Khalim Flail",
+	KhalimsWill:         "Super Khalim Flail",
 	Suwayyah:            "Suwayyah",
 	SwirlingCrystal:     "Swirling Crystal",
 	Tabar:               "Tabar",
@@ -2047,7 +2047,7 @@ var miscCodes = map[ItemType]string{
 	AntidotePotion:                "Antidote Potion",
 	Arrows:                        "Arrows",
 	BaalsEye:                      "Baal's Eye",
-	BarkScroll:                    "Bark Scroll",
+	ScrollOfInifuss1:              "Bark Scroll",
 	BerRune:                       "Ber Rune",
 	Bolts:                         "Bolts",
 	BookofSkill:                   "Book of Skill",
@@ -2064,7 +2064,7 @@ var miscCodes = map[ItemType]string{
 	ChippedSapphire:               "Chipped Sapphire",
 	ChippedSkull:                  "Chipped Skull",
 	ChippedTopaz:                  "Chipped Topaz",
-	DecipheredBarkScroll:          "Deciphered Bark Scroll",
+	ScrollOfInifuss2:              "Deciphered Bark Scroll",
 	DiablosHorn:                   "Diablo's Horn",
 	Diamond:                       "Diamond",
 	DolRune:                       "Dol Rune",
@@ -2093,16 +2093,16 @@ var miscCodes = map[ItemType]string{
 	FullManaPotion:                "Full Mana Potion",
 	FullRejuvenationPotion:        "Full Rejuvenation Potion",
 	Gold:                          "Gold",
-	GoldBird:                      "Gold Bird",
-	GreaterHealingPotion:          "Greater Healing Potion",
-	GreaterManaPotion:             "Greater Mana Potion",
+	TheGoldenBird:                 "Gold Bird",
+	SuperHealingPotion:            "Greater Healing Potion",
+	SuperManaPotion:               "Greater Mana Potion",
 	GulRune:                       "Gul Rune",
 	HealingPotion:                 "Healing Potion",
 	HealingPotionMid:              "Healing Potion",
 	HelRune:                       "Hel Rune",
 	Herb:                          "Herb",
 	HoradricCube:                  "Horadric Cube",
-	IdentifyBook:                  "Identify Book",
+	TomeOfIdentify:                "Tome Of Identify",
 	IdentifyScroll:                "Identify Scroll",
 	IoRune:                        "Io Rune",
 	IstRune:                       "Ist Rune",
@@ -2121,13 +2121,13 @@ var miscCodes = map[ItemType]string{
 	LargeBluePotion:               "Large Blue Potion",
 	LargeRedPotion:                "Large Red Potion",
 	LemRune:                       "Lem Rune",
-	LesserHealingPotion:           "Lesser Healing Potion",
-	LesserManaPotion:              "Lesser Mana Potion",
+	MinorHealingPotion:            "Lesser Healing Potion",
+	MinorManaPotion:               "Lesser Mana Potion",
 	LightHealingPotion:            "Light Healing Potion",
 	LightManaPotion:               "Light Mana Potion",
 	LoRune:                        "Lo Rune",
 	LumRune:                       "Lum Rune",
-	Maguffin:                      "Maguffin",
+	MalahsPotion:                  "Maguffin",
 	MalRune:                       "Mal Rune",
 	ManaPotion:                    "Mana Potion",
 	ManaPotionMid:                 "Mana Potion",
@@ -2152,19 +2152,19 @@ var miscCodes = map[ItemType]string{
 	Ruby:                          "Ruby",
 	Sapphire:                      "Sapphire",
 	Scroll:                        "Scroll",
-	ScrollofHoradric:              "Scroll of Horadric",
-	ScrollofMalah:                 "Scroll of Malah",
+	HoradricScroll:                "Scroll of Horadric",
+	ScrollOfResistance:            "Scroll of Malah",
 	PotionofLife:                  "Potion of Life",
 	ShaelRune:                     "Shael Rune",
-	SkeletonKey:                   "Skeleton Key",
+	Key:                           "Skeleton Key",
 	Skull:                         "Skull",
 	SmallBluePotion:               "Small Blue Potion",
 	SmallRedPotion:                "Small Red Potion",
 	SolRune:                       "Sol Rune",
 	StaminaPotion:                 "Stamina Potion",
 	StandardofHeroes:              "Standard of Heroes",
-	StrongHealingPotion:           "Strong Healing Potion",
-	StrongManaPotion:              "Strong Mana Potion",
+	GreaterHealingPotion:          "Strong Healing Potion",
+	GreaterManaPotion:             "Strong Mana Potion",
 	SurRune:                       "Sur Rune",
 	TalRune:                       "Tal Rune",
 	ThawingPotion:                 "Thawing Potion",
@@ -2173,8 +2173,8 @@ var miscCodes = map[ItemType]string{
 	TokenofAbsolution:             "Token of Absolution",
 	Topaz:                         "Topaz",
 	Torch:                         "Torch",
-	TownPortalBook:                "Town Portal Book",
-	TownPortalScroll:              "Town Portal Scroll",
+	TomeOfTownPortal:              "Town Portal Book",
+	ScrollOfTownPortal:            "Town Portal Scroll",
 	TwistedEssenceofSuffering:     "Twisted Essence of Suffering",
 	UmRune:                        "Um Rune",
 	VexRune:                       "Vex Rune",
