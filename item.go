@@ -61,15 +61,15 @@ type Item struct {
 }
 
 func (i *Item) getTypeID() uint64 {
-	if _, ok := armorCodes[ItemType(i.Type)]; ok {
+	if _, ok := ArmorCodes[ItemType(i.Type)]; ok {
 		return armor
 	}
 
-	if _, ok := shieldCodes[ItemType(i.Type)]; ok {
+	if _, ok := ShieldCodes[ItemType(i.Type)]; ok {
 		return shield
 	}
 
-	if _, ok := weaponCodes[ItemType(i.Type)]; ok {
+	if _, ok := WeaponCodes[ItemType(i.Type)]; ok {
 		return weapon
 	}
 
@@ -1519,7 +1519,7 @@ var magicalProperties = map[uint64]MagicalProperty{
 }
 
 // Shield item codes mapped to their in game, human-friendly, readable name.
-var shieldCodes = map[ItemType]string{
+var ShieldCodes = map[ItemType]string{
 	Aegis:            "Aegis",
 	AerinShield:      "Aerin Shield",
 	AkaranRondache:   "Akaran Rondache",
@@ -1576,7 +1576,7 @@ var shieldCodes = map[ItemType]string{
 }
 
 // Armor item codes mapped to their in game, human-friendly, readable name.
-var armorCodes = map[ItemType]string{
+var ArmorCodes = map[ItemType]string{
 	AlphaHelm:         "Alpha Helm",
 	AncientArmor:      "Ancient Armor",
 	Antlers:           "Antlers",
@@ -1729,7 +1729,7 @@ var armorCodes = map[ItemType]string{
 }
 
 // Weapon item codes mapped to their in game, human-friendly, readable name.
-var weaponCodes = map[ItemType]string{
+var WeaponCodes = map[ItemType]string{
 	AncientAxe:          "Ancient Axe",
 	AncientSword:        "Ancient Sword",
 	Arbalest:            "Arbalest",
@@ -2040,7 +2040,7 @@ var weaponCodes = map[ItemType]string{
 
 // Misc items codes, like jewelry, gems, potions and runes, mapped to their in
 // game, human-friendly, readable name.
-var miscCodes = map[ItemType]string{
+var MiscCodes = map[ItemType]string{
 	Amethyst:                      "Amethyst",
 	AmnRune:                       "Amn Rune",
 	Amulet:                        "Amulet",

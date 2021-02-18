@@ -834,17 +834,17 @@ func ParseSimpleBits(ibr *bitReader, item *Item) error {
 
 		switch item.TypeID {
 		case armor:
-			typeName, ok := armorCodes[ItemType(item.Type)]
+			typeName, ok := ArmorCodes[ItemType(item.Type)]
 			if ok {
 				item.TypeName = typeName
 			}
 		case shield:
-			typeName, ok := shieldCodes[ItemType(item.Type)]
+			typeName, ok := ShieldCodes[ItemType(item.Type)]
 			if ok {
 				item.TypeName = typeName
 			}
 		case weapon:
-			typeName, ok := weaponCodes[ItemType(item.Type)]
+			typeName, ok := WeaponCodes[ItemType(item.Type)]
 			if ok {
 				item.TypeName = typeName
 			}
@@ -868,7 +868,7 @@ func ParseSimpleBits(ibr *bitReader, item *Item) error {
 			}
 
 		case other:
-			typeName, ok := miscCodes[ItemType(item.Type)]
+			typeName, ok := MiscCodes[ItemType(item.Type)]
 			if ok {
 				item.TypeName = typeName
 			}
